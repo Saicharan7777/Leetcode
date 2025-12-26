@@ -2,18 +2,18 @@ class Solution {
 public:
     int pivotInteger(int n) {
         int s=0;
-        for(int i=1;i<=n;i++)
+        for(int j=1;j<=n;j++)
         {
-            s+=i;
+            s+=j;
         }
-
-        int v=0,v1=-1;
+        int v=0;
         for(int i=1;i<=n;i++)
         {
+            
+            s-=i;
+            if(v==s)return i;
             v+=i;
-            if(v==(s-v)+i
-            )v1=i;
         }
-        return v1;
+        return -1;
     }
 };
