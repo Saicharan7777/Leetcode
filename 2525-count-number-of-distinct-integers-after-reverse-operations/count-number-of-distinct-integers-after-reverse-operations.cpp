@@ -6,9 +6,13 @@ public:
         for(int i=0;i<n;i++)
         {
             r[nums[i]]++;
-            string v=to_string(nums[i]);
-            reverse(v.begin(),v.end());
-            r[stoi(v)]++;
+            int t=0,v=nums[i];
+            while(v>0)
+            {
+                t=t*10+(v%10);
+                v=v/10;
+            }
+            r[t]++;
         }
         return r.size();
     }
