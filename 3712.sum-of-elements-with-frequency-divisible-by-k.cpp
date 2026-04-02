@@ -1,10 +1,3 @@
-/*
- * @lc app=leetcode id=3712 lang=cpp
- *
- * [3712] Sum of Elements With Frequency Divisible by K
- */
-
-// @lc code=start
 class Solution {
 public:
     int sumDivisibleByK(vector<int>& nums, int k) {
@@ -15,9 +8,15 @@ public:
             r[nums[i]]++;
         }
 
-…        
+        int s=0;
+        for(int i=0;i<n;i++)
+        {
+            if(r[nums[i]]%k==0){
+                s+=(nums[i]*r[nums[i]]);
+                r[nums[i]]=0;
+            }
+        }
+        return s;
     }
 };
-};
-// @lc code=end
 
