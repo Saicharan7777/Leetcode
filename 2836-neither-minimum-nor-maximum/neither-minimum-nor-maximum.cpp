@@ -5,18 +5,10 @@ public:
 
      if(n<=2) return -1;
 
-     int m1=INT_MAX,m2=INT_MIN;
-     for(int i=0;i<n;i++)
-     {
-        m1=min(m1,nums[i]);
-        m2=max(m2,nums[i]);
-     }   
+     int a=nums[0],b=nums[1],c=nums[2];
 
-     for(int i=0;i<n;i++)
-     {
-        if(nums[i]!=m1&&nums[i]!=m2)return nums[i];
-     }
-
-     return -1;
+     if(a>b&&a<c||a>c&&a<b)return a;
+     else if(b>a&&b<c||b>c&&b<a)return b;
+     else return c;
     }
 };
