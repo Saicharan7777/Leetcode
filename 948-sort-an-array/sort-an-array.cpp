@@ -1,46 +1,53 @@
 class Solution {
 public:
-    void m(vector<int>&a, int l, int m, int h)
+    void MergeSort(vector<int> & a, int l, int m, int h)
     {
         vector<int> b;
-        int i=l,j=m+1;
-        while(i<=m&&j<=h)
+        int i = l, j = m + 1;
+        while(i <= m && j <= h)
         {
-            if(a[i]<=a[j])
+            if(a[i] <= a[j])
             {
                 b.push_back(a[i++]);
             }
-            else
+            else 
             {
                 b.push_back(a[j++]);
             }
         }
-        while(i<=m)
+
+        while(i <= m)
         {
             b.push_back(a[i++]);
         }
-        while(j<=h)
+
+        while(j <= h)
         {
             b.push_back(a[j++]);
         }
-        for(int k=0;k<b.size();k++)
+
+        int n1 = b.size();
+        for(int k = 0; k < n1; k++)
         {
-            a[l+k]=b[k];
+            a[l + k] = b[k];
         }
     }
 
-    void ms(vector<int>&a, int l,int h)
+    void Merge(vector<int> & a, int l, int h)
     {
-        if(l<h)
+        if(l < h)
         {
-            int mid=(l+h)/2;
-            ms(a,l,mid);
-            ms(a,mid+1,h);
-            m(a,l,mid,h);
+            int mid = (l + h) / 2;
+            Merge(a, l, mid);
+            Merge(a, mid + 1, h);
+            MergeSort(a, l, mid, h);
         }
     }
     vector<int> sortArray(vector<int>& nums) {
-        ms(nums,0,nums.size()-1);
-        return nums;
+        int n = nums.size();
+
+        Merge(nums, 0, n - 1);
+
+        return  nums;
     }
 };
