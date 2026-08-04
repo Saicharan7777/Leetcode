@@ -1,19 +1,24 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        int n=s.size(),m=t.size();
-        if(n!=m)return false;
-        int r[26]={0};
-        for(int i=0;i<n;i++)
+        int n = s.size(), m = t.size();
+
+        if(n != m) return false;
+        vector<int> f(26);
+        
+        for(int i = 0; i < n; i++)
         {
-            r[s[i]-'a']++;
-            r[t[i]-'a']--;
+            f[s[i] -'a']++;
         }
 
-        for(int j=0;j<26;j++)
+        for(int j = 0; j < m; j++)
         {
-            if(r[j]!=0)return false;
+            if(f[t[j] - 'a'] != 0){
+            f[t[j] - 'a']--;
+            }
+            else return false;
         }
+
         return true;
     }
 };
