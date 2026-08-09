@@ -4,13 +4,13 @@ public:
         int n = prices.size();
         int m = prices[0], v = 0;
 
-        for(int i = 0; i < n; i++)
+        for(int i : prices)
         {
-            if(m > prices[i])
+            if(m > i)
             {
-                m = prices[i];
+                m = i;
             }
-            v = max(v, prices[i] - m);
+            v = max(v, i - m);
         }
         return v;
     }
